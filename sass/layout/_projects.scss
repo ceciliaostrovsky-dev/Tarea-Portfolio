@@ -64,6 +64,7 @@
 
   &__card {
     position: relative;
+    min-width: 0;
 
     @include breakpoint(tablet) {
       padding-bottom: 2.25rem;

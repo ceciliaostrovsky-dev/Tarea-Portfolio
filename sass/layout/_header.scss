@@ -53,7 +53,7 @@
     max-width: 174px;
     aspect-ratio: 174 /242;
     object-fit: cover;
-    z-index: 2;
+    z-index: 0;
     background-color: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(0.4px);
 
@@ -82,7 +82,7 @@
   &__rings,
   &__circle {
     position: absolute;
-    z-index: 0;
+    z-index: 1;
   }
   &__rings {
     top: 160px;
