@@ -1,0 +1,74 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+
+  @include breakpoint(tablet) {
+    align-items: flex-start;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    text-align: center;
+    padding: 2.5rem 1rem;
+
+    @include breakpoint(tablet) {
+      max-width: 445px;
+      text-align: left;
+      align-items: flex-start;
+      padding: 0;
+      padding-top: 5.5rem;
+    }
+
+    @include breakpoint(desktop) {
+      padding-top: 6rem;
+      max-width: none;
+      width: 70%;
+    }
+  }
+
+  &__title {
+    @include font-title-m;
+
+    @include breakpoint(tablet) {
+      @include font-title-tablet;
+    }
+
+    @include breakpoint(desktop) {
+      font-size: 4.5rem;
+    }
+  }
+
+  &__name {
+    position: relative;
+    display: inline-block;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 100%;
+      height: 5px;
+      background-color: $color-primary;
+    }
+  }
+
+  &__description {
+    @include font-body-l;
+    color: $color-txt-body;
+
+    @include breakpoint(tablet) {
+      padding-top: 2.5rem;
+      padding-bottom: 1rem;
+    }
+  }
+}

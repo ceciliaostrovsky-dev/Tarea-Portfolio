@@ -1,0 +1,119 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+@use "../abstracts/placeholders" as *;
+
+.header {
+  //Posicionamiento mobile first
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  padding-top: 1.25rem;
+  position: relative;
+
+  //Posicionamiento tablet
+  @include breakpoint(tablet) {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__socials {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+
+    &-list {
+      @include reset-list;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    &-link {
+      display: inline-flex;
+      align-items: center;
+      transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+      &:hover {
+        transform: translateY(-3px);
+        opacity: 0.7;
+      }
+    }
+
+    &-icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__image {
+    margin-top: 50px;
+    width: 100%;
+    max-width: 174px;
+    aspect-ratio: 174 /242;
+    object-fit: cover;
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(0.4px);
+
+    @include breakpoint(tablet) {
+      margin-top: 0;
+      max-width: 322px;
+      padding-top: 8rem;
+      aspect-ratio: auto;
+      height: auto;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      right: -2rem;
+    }
+
+    @include breakpoint(desktop) {
+      max-width: 380px;
+    }
+  }
+
+  &__logo {
+    position: relative;
+    z-index: 10;
+  }
+
+  &__rings,
+  &__circle {
+    position: absolute;
+    z-index: 0;
+  }
+  &__rings {
+    top: 160px;
+    left: -170px;
+
+    @include breakpoint(tablet) {
+      top: 100px;
+      left: -240px;
+    }
+
+    @include breakpoint(desktop) {
+      top: 100px;
+      left: -120px;
+    }
+  }
+  &__circle {
+    bottom: 0;
+    right: -5.5rem;
+
+    @include breakpoint(tablet) {
+      width: 100px;
+      height: 100px;
+      bottom: -31rem;
+      right: -5rem;
+    }
+
+    @include breakpoint(desktop) {
+      width: 130px;
+      height: 130px;
+      bottom: -32rem;
+      right: 300px;
+    }
+  }
+}

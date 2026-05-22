@@ -1,0 +1,35 @@
+@use "../abstracts/variables" as *;
+
+//Deslizamiento suave para los enlaces ancla
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: $color-bg-body; //Color de fondo de todo el diseño
+}
+
+// Para que las imágenes no se salgan de su contenedor
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+// Para que los inputs y botones hereden la fuente elegida
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}

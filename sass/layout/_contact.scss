@@ -1,0 +1,89 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+@use "../abstracts/placeholders" as *;
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 5rem 1.25rem;
+  align-self: start;
+  text-align: center;
+  align-items: center;
+  position: relative;
+  background-color: $color-bg-alt;
+  box-shadow:
+    -50vw 0 0 0 $color-bg-alt,
+    50vw 0 0 0 $color-bg-alt;
+
+  @include breakpoint(tablet) {
+    padding-bottom: 8rem;
+  }
+
+  @include breakpoint(desktop) {
+    flex-direction: row;
+    text-align: start;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 1.25rem;
+    width: calc(100% - 2.5rem);
+    height: 1px;
+    background-color: $color-txt-body;
+
+    @include breakpoint(desktop) {
+      width: 100%;
+      bottom: 60px;
+      left: 0;
+    }
+  }
+
+  &__title {
+    @include font-title-l;
+    color: $color-txt-title;
+    padding-bottom: 1.5rem;
+
+    @include breakpoint(tablet) {
+      @include font-title-tablet;
+      max-width: 450px;
+    }
+
+    @include breakpoint(desktop) {
+      @include font-title-xl;
+      padding-bottom: 2.25rem;
+    }
+  }
+
+  &__description {
+    @include font-body-s;
+    color: $color-txt-body;
+    padding-bottom: 1.5rem;
+
+    @include breakpoint(tablet) {
+      @include font-body-l;
+      max-width: 450px;
+    }
+  }
+
+  &__rings {
+    position: absolute;
+    bottom: 100px;
+    left: -180px;
+    z-index: 1;
+
+    @include breakpoint(tablet) {
+      bottom: 50px;
+      left: -220px;
+    }
+
+    @include breakpoint(desktop) {
+      bottom: 150px;
+      left: -280px;
+    }
+  }
+}

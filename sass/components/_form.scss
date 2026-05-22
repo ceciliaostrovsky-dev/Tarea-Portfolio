@@ -1,0 +1,93 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+  position: relative;
+
+  @include breakpoint(tablet) {
+    //ancho máximo a partir de tablet
+    max-width: 450px;
+    margin: 0;
+  }
+
+  &-item {
+    position: relative;
+    border-bottom: 1px solid $color-txt-body;
+    display: flex;
+    transition: border-bottom-color 0.3s ease;
+    &:focus-within {
+      border-bottom: 1px solid $color-primary;
+    }
+
+    //Estado de error rojo
+    &:has(input:invalid:not(:placeholder-shown)) {
+      border-bottom-color: $color-error;
+
+      .form__error-icon,
+      .form__error-text {
+        display: block;
+      }
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 1rem 1.25rem;
+      background: transparent;
+      border: none;
+      color: $color-txt-title;
+      @include font-body-s;
+      outline: none;
+      margin: 0;
+
+      &:not([type="email"]):not(textarea) {
+        text-transform: uppercase;
+      }
+
+      &::placeholder {
+        padding-left: 0;
+        color: transparent;
+        transition: color 0.3s ease;
+      }
+
+      &:focus::placeholder {
+        color: rgba($color-txt-title, 0.5);
+      }
+
+      &:invalid:not(:placeholder-shown) {
+        color: $color-error;
+      }
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    .form__error-icon {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .form__error-text {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 100%;
+      margin-top: 0.25rem;
+      color: $color-error;
+      @include font-body-s;
+    }
+  }
+}
+
+.btn__secondary {
+  align-self: end;
+}

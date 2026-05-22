@@ -1,0 +1,21 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.container {
+  margin: 0 auto; // Para centrar la caja
+  background-color: $color-bg-body;
+  color: $color-txt-body;
+  padding: 0 2rem;
+  //overflow-x: hidden;
+
+  @include breakpoint(desktop) {
+    padding: 0 8rem;
+    max-width: 1440px;
+  }
+
+  /* //Centra el contenido a partir de 1441
+  @include breakpoint(desktop-xl) {
+    margin-left: auto;
+    margin-right: auto;
+  }*/
+}

@@ -1,0 +1,135 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+@use "../abstracts/placeholders" as *;
+
+.project {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 5rem;
+  position: relative;
+
+  @include breakpoint(desktop) {
+    padding-top: 4rem;
+  }
+
+  &__rings {
+    position: absolute;
+    top: -125px;
+    right: -130px;
+    z-index: 1;
+
+    @include breakpoint(tablet) {
+      top: -160px;
+      right: -100px;
+    }
+
+    @include breakpoint(desktop) {
+      top: -170px;
+      right: -140px;
+    }
+  }
+  &__intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-title {
+      @include font-title-l;
+      color: $color-txt-title;
+
+      @include breakpoint(tablet) {
+        @include font-title-tablet;
+      }
+
+      @include breakpoint(desktop) {
+        @include font-title-xl;
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    @include reset-list;
+    gap: 3.5rem;
+
+    @include breakpoint(tablet) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+  }
+
+  &__card {
+    position: relative;
+
+    @include breakpoint(tablet) {
+      padding-bottom: 2.25rem;
+    }
+
+    @include breakpoint(desktop) {
+      &:hover {
+        .project__card-img {
+          opacity: 0.3;
+        }
+
+        .project__card-links {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+
+    &-img {
+      width: 100%;
+
+      @include breakpoint(desktop) {
+        transition: opacity 0.3s ease;
+      }
+    }
+
+    &-info {
+      margin-top: 1.25rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-title {
+      @include font-title-s;
+      color: $color-txt-title;
+      @extend %text-truncate;
+    }
+
+    &-languages {
+      @include font-body-l;
+      color: $color-txt-body;
+    }
+
+    &-links {
+      display: flex;
+      gap: 2rem;
+      margin-top: 1.25rem;
+
+      @include breakpoint(desktop) {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        top: 35%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition:
+          opacity 0.3s ease,
+          visibility 0.3s ease;
+        z-index: 10;
+        flex-direction: column;
+        align-items: center;
+
+        .btn__secondary {
+          align-self: center;
+        }
+      }
+    }
+  }
+}

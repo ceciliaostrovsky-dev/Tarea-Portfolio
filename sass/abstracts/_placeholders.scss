@@ -1,0 +1,13 @@
+//Centrado absoluto
+%flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+//Texto truncado, cuando los títulos son muy largos
+%text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

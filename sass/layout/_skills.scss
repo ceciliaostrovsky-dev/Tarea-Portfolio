@@ -1,0 +1,91 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+@use "../abstracts/placeholders" as *;
+
+.skills {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 5rem 0;
+  text-align: center;
+  align-items: center;
+  position: relative;
+
+  @include breakpoint(desktop) {
+    padding-top: 14rem;
+  }
+
+  //Línea superior
+  &::before {
+    content: "";
+    position: absolute;
+    top: 30px;
+    left: 0;
+    width: 100%; // Para que no se superponga con el padding
+    height: 1.5px;
+    background-color: $color-txt-title;
+    opacity: 0.7;
+    z-index: 1;
+
+    @include breakpoint(desktop) {
+      width: calc(100% + 4rem);
+      left: -2rem;
+      top: 170px;
+    }
+  }
+
+  //Línea inferior
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    width: 100%;
+    height: 1.5px;
+    background-color: $color-txt-title;
+    opacity: 0.7;
+    z-index: 1;
+
+    @include breakpoint(tablet) {
+      display: none;
+    }
+  }
+
+  &__title {
+    @include font-title-m;
+    color: $color-txt-title;
+    @include breakpoint(desktop) {
+      @include font-title-l;
+    }
+  }
+
+  &__list {
+    @include reset-list;
+
+    @include breakpoint(tablet) {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+
+    @include breakpoint(desktop) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__item {
+    @include breakpoint(tablet) {
+      text-align: start;
+    }
+  }
+  &__description {
+    @include font-body-s;
+    color: $color-txt-body;
+    padding-bottom: 1.5rem;
+
+    @include breakpoint(desktop) {
+      @include font-body-l;
+    }
+  }
+}
